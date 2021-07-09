@@ -37,8 +37,12 @@ const Register = () => {
             return errors;
           }}
           onSubmit={async (values, { setErrors }) => {
-            values.password !== values.password_confirmation &&
-              setState({ ...state, errorMessage: "Password didn't match" });
+            if (values.password !== values.password_confirmation) {
+              return setState({
+                ...state,
+                errorMessage: "Password didn't match",
+              });
+            }
             try {
               let res = await axios.post(
                 "https://backend.imentalhealth.net/api/register/student",
