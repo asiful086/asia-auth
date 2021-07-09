@@ -15,7 +15,7 @@ const Home = () => {
           </p>
           <div className="my-3">
             <button
-              className="capitalize font-normal border rounded bg-blue-700 px-3 py-1 mt-3 focus:outline-none text-white my-2"
+              className="capitalize font-normal border rounded bg-blue-700 px-3 py-1 mt-3 focus:outline-none text-white mb-3"
               type="submit"
             >
               <div className="flex">

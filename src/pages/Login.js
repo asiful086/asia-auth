@@ -102,7 +102,7 @@ const Login = () => {
                     <Link to="/register">don't have an account?</Link>
                   </p>
                   <button
-                    className="capitalize font-normal border rounded bg-blue-700 px-3 py-1 mt-3 focus:outline-none text-white my-2"
+                    className="capitalize font-normal border rounded bg-blue-700 px-3 py-1 mt-3 focus:outline-none text-white mb-5"
                     type="submit"
                   >
                     <div className="flex">
