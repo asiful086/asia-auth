@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+
+import "./App.css";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
+  useEffect(() => {
+    localStorage.getItem("token") &&
+      console.log("call the refresh token for the user"); // have to call an api to get the current loggedin user
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <ProtectedRoute exact path="/" component={Home} />
+        <Route
+          path="/register"
+          render={() =>
+            !localStorage.getItem("token") ? <Register /> : <Redirect to="/" />
+          }
+        />
+        <Route
+          path="/login"
+          render={() =>
+            !localStorage.getItem("token") ? <Login /> : <Redirect to="/" />
+          }
+        />
+      </Switch>
     </div>
   );
 }
